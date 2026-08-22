@@ -30,7 +30,12 @@ func main() {
 
 	log.Println("Servidor corriendo en puerto : ", port)
 
-	err := http.ListenAndServe(addr, mux)
+	servidor := &http.Server{
+		Addr:    addr,
+		Handler: mux,
+	}
+
+	err := servidor.ListenAndServe()
 
 	if err != nil {
 		log.Fatalln("Ocurrio un error al iniciar servidor", err)
