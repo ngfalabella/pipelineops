@@ -23,12 +23,14 @@ func main() {
 	const port int = 8080
 	var addr string = fmt.Sprintf(":%d", port)
 
-	http.HandleFunc("/", handlerInit)
-	http.HandleFunc("/healthz", handlerHealthz)
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("/", handlerInit)
+	mux.HandleFunc("/healthz", handlerHealthz)
 
 	log.Println("Servidor corriendo en puerto : ", port)
 
-	err := http.ListenAndServe(addr, nil)
+	err := http.ListenAndServe(addr, mux)
 
 	if err != nil {
 		log.Fatalln("Ocurrio un error al iniciar servidor", err)
