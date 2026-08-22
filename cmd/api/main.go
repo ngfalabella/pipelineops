@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 )
 
 func handlerInit(w http.ResponseWriter, r *http.Request) {
@@ -31,8 +32,11 @@ func main() {
 	log.Println("Servidor corriendo en puerto : ", port)
 
 	servidor := &http.Server{
-		Addr:    addr,
-		Handler: mux,
+		Addr:         addr,
+		Handler:      mux,
+		ReadTimeout:  5 * time.Second,  //tiempo maximo para leer la request
+		WriteTimeout: 10 * time.Second, //tiempo maximo para escribir la respuesta
+		IdleTimeout:  60 * time.Second, //tiempo que vamos a permitir que la conexion este abierta sin hacer nada
 	}
 
 	err := servidor.ListenAndServe()
