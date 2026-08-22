@@ -1,2 +1,1 @@
-# pipelineops
-PipelineOps es un centro de control para automatizaciones de GoHighLevel, enfocado en observabilidad, auditoría y confiabilidad. Recibe eventos, evita duplicados, procesa tareas asíncronas y permite diagnosticar fallos, reintentos y estados operativos.
+Backend en Go orientado a integraciones, procesamiento de eventos, observabilidad y confiabilidad, diseñado como proyecto principal de portfolio y con foco en buenas prácticas de ingeniería y evolución hacia producción.
